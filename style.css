@@ -1,76 +1,132 @@
-:root
-{
-  --bg-black-900:#f2f2fc;
-  --bg-black-100:#001f36;
-  --bg-black-50:#e8dfec;
-  --text-black-900:#c19326;
-  --text-black-700:#504e70; 
+:root {
+    --bg-black-900: #e10000;
+    --bg-black-100: #004d9e;
+    --bg-black-50: #e8dfec;
+    --bg-black-500: #450457;
+    --text-black-900: #c19326;
+    --text-black-700: #ffffff;
 }
-body
-{  
-   line-height: 1.5;
-   font-size: 16px;
-   font-family: 'poppins' sans-serif;
+
+body {
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-black-700);
+    margin: 0; /* Adicionado para garantir que não haja margens extras */
 }
-*
-{
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     outline: none;
     text-decoration: none;
-    box-sizing:border-box; 
-}
-::before,::after
-{
-    box-sizing: border-box;
-}
-ul
-{
-    list-style: none;
-}
-.section
-{
-     background: var(--bg-black-900);
-     min-height: 100vh;
-     display: block;
-     position: fixed;
-     left: 270px;
-     padding:0 30px;
-     top: 0;
-     right: 0;
-     opacity: 1;
 }
 
-.padd-15
-{
-     padding-left: 15px;
-     padding-right: 15px;
+ul {
+    list-style: none;
 }
-.container
-{
-    max-width: 1400px; 
+
+.section {
+    background: var(--bg-black-900);
+    min-height: 100vh;
+    display: block;
+    position: fixed;
+    left: 270px;
+    padding: 0 30px;
+    top: 0;
+    right: 0;
+    opacity: 1;
+    background-color: #000000;
+}
+
+.section .active {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.padd-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container {
+    max-width: 1400px;
     width: 100%;
-    background: #ffffff;
-    margin: 0 auto; 
-    left: 60px;
+    background: #000000;
+    margin: 0 auto;
+    padding-top: 60px; /* Alterado de left para padding-top para alinhar corretamente */
+    padding-bottom: 70px; /* Alterado de right para padding-bottom para alinhar corretamente */
 }
-.row
-{
+
+.section .container {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+.section-title {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    position: relative;
+}
+
+.section-title h2::before {
+    content: '';
+    height: 4px;
+    width: 50px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.section-title h2::after {
+    content: '';
+    height: 4px;
+    width: 25px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+}
+
+.row {
     display: flex;
     flex-wrap: wrap;
     margin-left: -10px;
     margin-right: -15px;
     position: relative;
+    
 }
 
 /*aside*/
-.aside
-{
+.aside {
     width: 270px;
-    background: var(--bg-black-100);
+    background: var(--bg-black-500);
     position: fixed;
     left: 0;
-    top:  0;
+    top: 0;
     padding: 30px;
     height: 100%;
     border-right: 1px solid var(--bg-black-50);
@@ -79,31 +135,34 @@ ul
     align-items: center;
     z-index: 10;
 }
-.aside .logo
-{
+
+.aside.active {
+    left: -270px;
+}
+
+.aside .logo {
     position: absolute;
     top: 80px;
     font-size: 30px;
     text-transform: capitalize;
-    
 }
-.aside .logo a 
-{
+
+.aside .logo a {
     color: var(--text-black-900);
     font-weight: 700;
-    background: rgba(255, 255, 255, 0); /* Transparent background */
+    background: rgba(255, 255, 255, 0);
     padding: 15px 20px;
     font-size: 30px;
     letter-spacing: 5px;
     position: relative;
 }
-.aside .logo a span
-{
-   font-family:Verdana, Geneva, Tahoma, sans-serif; 
-   font-family: 50px;
+
+.aside .logo a span {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 50px;
 }
-.aside .logo a::before
-{
+
+.aside .logo a::before {
     content: '';
     position: absolute;
     width: 20px;
@@ -113,8 +172,8 @@ ul
     bottom: 0;
     left: 0;
 }
-.aside .logo a::after
-{
+
+.aside .logo a::after {
     content: '';
     position: absolute;
     width: 20px;
@@ -124,8 +183,8 @@ ul
     top: 0;
     right: 0;
 }
-.aside .nav-toggler
-{
+
+.aside .nav-toggler {
     height: 40px;
     width: 45px;
     border: 1px solid var(--bg-black-50);
@@ -134,36 +193,42 @@ ul
     left: 300px;
     top: 20px;
     border-radius: 5px;
-    background: var(--bg-black-100);  
-    display: flex; 
+    background: var(--bg-black-100);
+    display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
+    transition: left 0.3s ease, transform 0.3s ease;
 }
-.aside .nav-toggler span
-{
+
+.aside .nav-toggler span {
     height: 2px;
     width: 18px;
     background: var(--skin-color);
     display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-.aside .nav
-{
+/* Mudando a rotação do ícone quando o sidebar está ativo */
+.aside.active .nav-toggler span {
+    transform: rotate(90deg);
+}
+
+.aside .nav {
     margin-top: 50px;
 }
-.aside .nav :hover
-{
+
+.aside .nav :hover {
     color: #daa520;
-    background-color: rgb(7, 64, 114);
+    background-color: rgb(14, 79, 136);
 }
-.aside .nav li
-{
+
+.aside .nav li {
     margin-bottom: 20px;
     text-transform: uppercase;
     display: block;
 }
-.aside .nav li a
-{
+
+.aside .nav li a {
     font-size: 20px;
     font-weight: 600;
     display: block;
@@ -171,61 +236,142 @@ ul
     color: var(--text-black-900);
     padding: 5px 15px;
 }
-.aside .nav li a.active
-{
+
+.aside .nav li a.active {
     color: var(--skin-color);
 }
-.aside .nav li a i
-{
+
+.aside .nav li a i {
     margin-right: 15px;
 }
+
 /* home */
-.home
-{
+.home {
     min-height: 100vh;
     display: flex;
-    color: var(--text-black-900);
 }
-.home .home-info
-{
+
+.home .home-info {
+    position: relative;
+    top: 12rem;
     flex: 0 0 60%;
     max-width: 60%;
 }
+
 h3.apresentação {
-    font-size: 28px;
+    font-size: 30px;
     margin: 15px 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    height: 20px;
 }
 
 h3.apresentação span {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 30px;
+    font-size: inherit;
     font-weight: 700;
-    color: var(--skin-color);
+    color: var(--bg-black-50);
 }
 
 h3.profissão {
     font-size: 30px;
     margin: 15px 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
 }
-.tipo
-{
+
+.tipo {
     color: var(--skin-color);
 }
-.home-info p
-{
-    margin-bottom: 70px; 
+
+.home-info p {
+    margin-bottom: 70px;
     font-size: 20px;
     color: var(--text-black-700);
 }
-.home .home-img
-{
+
+.home .home-img {
     flex: 0 0 40%;
     max-width: 40%;
     text-align: center;
     position: relative;
 }
-.home .home-img img
-{
-    height: 400px;
 
+.home .home-img img {
+    height: 400px;
+}
+
+/* About (Mais) */
+.about .about-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .about-text {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.about .about-content .about-text h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.about .about-content .about-text h3 span {
+    color: var(--skin-color);
+}
+
+.sobre .container .about-content .about-text h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.sobre .container .about-content .about-text p {
+    font-size: 16px;
+    color: var(--text-black-900);
+}
+
+/* Define a animação somente para telas de celular */
+@media screen and (max-width: 767px) {
+    .aside {
+        transition: left 0.3s ease;
+    }
+}
+.square 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1
+{
+    text-align: center;
+    background-color: #450457;
+    border-radius: 20px;
+    color: #daa520;
+}
+.portfolio {
+    text-align: center; /* Alinha as imagens ao centro */
+}
+
+.portfolio img {
+    width: 30%; /* Define a largura das imagens */
+    margin: 10px; /* Espaçamento entre as imagens */
+    display: inline-block; /* Faz com que as imagens se comportem como blocos e sejam exibidas lado a lado */
+    vertical-align: top; /* Alinha as imagens no topo */
+    border: 2px solid rgb(104, 36, 172); /* Adiciona uma borda branca */
+    animation: changeColor 3s infinite alternate; /* Aplica a animação à borda */
+}
+
+@keyframes changeColor {
+    51% { border-color: rgb(238, 255, 0); } /* Inicialmente a borda é branca */
+    50% { border-color: #9466ff; } /* Aos 50% da animação, a borda se torna azul */
+    100% { border-color: rgb(199, 244, 0); } /* No final, a borda volta a ser branca */
+}
+h2{
+    text-align: center;
+    background-color: #450457;
+    border-radius: 20px;
+    color: #daa520;
 }
